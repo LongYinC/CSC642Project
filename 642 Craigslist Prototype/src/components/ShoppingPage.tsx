@@ -3,13 +3,13 @@ import { Header } from './Header';
 import { ListingCard } from './ListingCard';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-interface ClothingPageProps {
+interface ShoppingPageProps {
   onBackToHome: () => void;
   onGoToChat: () => void;
   onSearch: (query: string) => void;
 }
 
-export function ClothingPage({ onBackToHome, onGoToChat, onSearch }: ClothingPageProps) {
+export function ShoppingPage({ onBackToHome, onGoToChat, onSearch }: ShoppingPageProps) {
   const [searchInput, setSearchInput] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [favorites, setFavorites] = useState<number[]>([]);
@@ -66,8 +66,8 @@ export function ClothingPage({ onBackToHome, onGoToChat, onSearch }: ClothingPag
   const visibleListings = listings.slice(currentIndex, currentIndex + 3);
 
   const toggleFavorite = (id: number) => {
-    setFavorites(prev => 
-      prev.includes(id) 
+    setFavorites(prev =>
+      prev.includes(id)
         ? prev.filter(favId => favId !== id)
         : [...prev, id]
     );
@@ -75,9 +75,9 @@ export function ClothingPage({ onBackToHome, onGoToChat, onSearch }: ClothingPag
 
   return (
     <div className="min-h-screen bg-white">
-      <Header 
-        searchInput={searchInput} 
-        setSearchInput={setSearchInput} 
+      <Header
+        searchInput={searchInput}
+        setSearchInput={setSearchInput}
         onSearch={handleSearch}
         onLogoClick={onBackToHome}
         onChatClick={onGoToChat}
@@ -102,7 +102,7 @@ export function ClothingPage({ onBackToHome, onGoToChat, onSearch }: ClothingPag
             <div className="flex gap-8 items-center justify-center">
               {visibleListings.map((listing) => (
                 <div key={listing.id} className="w-64">
-                  <ListingCard 
+                  <ListingCard
                     {...listing}
                     isFavorite={favorites.includes(listing.id)}
                     onToggleFavorite={() => toggleFavorite(listing.id)}
@@ -128,17 +128,17 @@ export function ClothingPage({ onBackToHome, onGoToChat, onSearch }: ClothingPag
           <button className="text-left hover:underline">Women's Clothing</button>
           <button className="text-left hover:underline">Child's Clothing</button>
           <button className="text-left hover:underline">Swim Wear</button>
-          
+
           <button className="text-left hover:underline">Casual</button>
           <button className="text-left hover:underline">Formal</button>
           <button className="text-left hover:underline">Sport</button>
           <button className="text-left hover:underline">Street Wear</button>
-          
+
           <button className="text-left hover:underline">Tops</button>
           <button className="text-left hover:underline">Bottoms</button>
           <button className="text-left hover:underline">Dresses</button>
           <button className="text-left hover:underline">Outer Wear</button>
-          
+
           <button className="text-left hover:underline">Vintage</button>
           <button className="text-left hover:underline">Work Wear</button>
           <button className="text-left hover:underline">Sleep Wear</button>

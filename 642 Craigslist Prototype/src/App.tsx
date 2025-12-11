@@ -3,10 +3,10 @@ import { HomePage } from './components/HomePage';
 import { SearchResultsPage } from './components/SearchResultsPage';
 import { ListingDetailPage } from './components/ListingDetailPage';
 import { ChatPage } from './components/ChatPage';
-import { ClothingPage } from './components/ClothingPage';
+import { ShoppingPage } from './components/ShoppingPage';
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'search' | 'listing' | 'chat' | 'clothing'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'search' | 'listing' | 'chat' | 'shopping'>('home');
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleSearch = (query: string) => {
@@ -31,8 +31,8 @@ export default function App() {
     setCurrentPage('listing');
   };
 
-  const handleGoToClothing = () => {
-    setCurrentPage('clothing');
+  const handleGoToShopping = () => {
+    setCurrentPage('shopping');
   };
 
   return (
@@ -41,7 +41,7 @@ export default function App() {
         <HomePage 
           onSearch={handleSearch} 
           onGoToChat={handleGoToChat}
-          onGoToClothing={handleGoToClothing}
+          onGoToShopping={handleGoToShopping}
         />
       )}
       {currentPage === 'search' && (
@@ -64,8 +64,8 @@ export default function App() {
           onBack={handleBackToListing}
         />
       )}
-      {currentPage === 'clothing' && (
-        <ClothingPage 
+      {currentPage === 'shopping' && (
+        <ShoppingPage
           onBackToHome={handleBackToHome}
           onGoToChat={handleGoToChat}
           onSearch={handleSearch}
